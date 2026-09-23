@@ -3,7 +3,10 @@ function isValidLoan(daysLate) {
 }
 
 function calculateLateFee(daysLate, ratePerDay) {
-  let fee = Math.floor(daysLate * ratePerDay);
+  if (daysLate <= 1) {
+    return 0;
+  }
+  let fee = Math.round(daysLate * ratePerDay);
   if (fee > 20) {
     fee = 20;
   }
